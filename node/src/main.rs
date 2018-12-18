@@ -29,7 +29,7 @@ use graph::prelude::{JsonRpcServer as JsonRpcServerTrait, *};
 use graph::util::log::{guarded_logger, logger, register_panic_hook};
 use graph_core::{
     ElasticLoggingConfig, SubgraphInstanceManager, SubgraphProvider as IpfsSubgraphProvider,
-    SubgraphProviderWithNames as IpfsSubgraphProviderWithNames,
+    SubgraphRegistrar as IpfsSubgraphRegistrar,
 };
 use graph_datasource_ethereum::{BlockStreamBuilder, Transport};
 use graph_runtime_wasm::RuntimeHostBuilder as WASMRuntimeHostBuilder;
@@ -405,7 +405,7 @@ fn async_main() -> impl Future<Item = (), Error = ()> + Send + 'static {
     tokio::spawn(forward(&mut subgraph_provider, &subgraph_instance_manager).unwrap());
 
     // Create named subgraph provider for resolving subgraph name->ID mappings
-    let named_subgraph_provider = Arc::new(IpfsSubgraphProviderWithNames::new(
+    let named_subgraph_provider = Arc::new(IpfsSubgraphRegistrar::new(
         logger.clone(),
         Arc::new(subgraph_provider),
         store.clone(),

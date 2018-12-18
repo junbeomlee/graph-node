@@ -70,7 +70,7 @@ pub mod prelude {
     };
     pub use components::subgraph::{
         RuntimeHost, RuntimeHostBuilder, SubgraphInstance, SubgraphInstanceManager,
-        SubgraphProvider, SubgraphProviderEvent, SubgraphProviderWithNames, SubgraphRegistry,
+        SubgraphProvider, SubgraphRegistrar,
     };
     pub use components::{EventConsumer, EventProducer};
 
@@ -85,6 +85,7 @@ pub mod prelude {
     pub use data::subgraph::{
         DataSource, Link, MappingABI, MappingEventHandler, SubgraphId, SubgraphManifest,
         SubgraphManifestResolveError, SubgraphProviderError, SubgraphDeploymentStatus,
+        SubgraphProviderEvent,
     };
     pub use data::subscription::{
         QueryResultStream, Subscription, SubscriptionError, SubscriptionResult,

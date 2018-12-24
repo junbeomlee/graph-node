@@ -69,8 +69,8 @@ pub mod prelude {
         SubgraphDeploymentStore,
     };
     pub use components::subgraph::{
-        RuntimeHost, RuntimeHostBuilder, SubgraphInstance, SubgraphInstanceManager,
-        SubgraphDeploymentProvider, SubgraphRegistrar,
+        RuntimeHost, RuntimeHostBuilder, SubgraphDeploymentProvider, SubgraphInstance,
+        SubgraphInstanceManager, SubgraphRegistrar,
     };
     pub use components::{EventConsumer, EventProducer};
 
@@ -79,13 +79,13 @@ pub mod prelude {
     pub use data::schema::Schema;
     pub use data::store::scalar::{BigInt, BigIntSign};
     pub use data::store::{
-        Attribute, DeploymentEvent, Entity, NodeId, SubgraphDeploymentName, SubgraphEntityPair,
-        Value, ValueType,
+        Attribute, DeploymentEvent, Entity, NodeId, SubgraphEntityPair, Value, ValueType,
     };
+    pub use data::subgraph::schema::TypedEntity;
     pub use data::subgraph::{
-        DataSource, Link, MappingABI, MappingEventHandler, SubgraphId, SubgraphManifest,
-        SubgraphManifestResolveError, SubgraphDeploymentProviderError, SubgraphDeploymentStatus,
-        SubgraphDeploymentProviderEvent,
+        DataSource, Link, MappingABI, MappingEventHandler, SubgraphDeploymentProviderError,
+        SubgraphDeploymentProviderEvent, SubgraphId, SubgraphManifest,
+        SubgraphManifestResolveError, SubgraphName, SubgraphRegistrarError,
     };
     pub use data::subscription::{
         QueryResultStream, Subscription, SubscriptionError, SubscriptionResult,

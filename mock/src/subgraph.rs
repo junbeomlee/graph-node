@@ -55,7 +55,9 @@ impl MockSubgraphDeploymentProvider {
 
         self.event_sink
             .clone()
-            .send(SubgraphDeploymentProviderEvent::SubgraphStart(mock_subgraph))
+            .send(SubgraphDeploymentProviderEvent::SubgraphStart(
+                mock_subgraph,
+            ))
             .wait()
             .unwrap();
     }
@@ -66,8 +68,8 @@ impl EventProducer<SubgraphDeploymentProviderEvent> for MockSubgraphDeploymentPr
         &mut self,
     ) -> Option<Box<Stream<Item = SubgraphDeploymentProviderEvent, Error = ()> + Send>> {
         self.generate_mock_events();
-        self.event_stream
-            .take()
-            .map(|s| Box::new(s) as Box<Stream<Item = SubgraphDeploymentProviderEvent, Error = ()> + Send>)
+        self.event_stream.take().map(|s| {
+            Box::new(s) as Box<Stream<Item = SubgraphDeploymentProviderEvent, Error = ()> + Send>
+        })
     }
 }
